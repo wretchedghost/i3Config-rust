@@ -1,0 +1,69 @@
+#theme = "solarized-dark" # dark with grey lettering
+#theme = "dracula" # very colorful
+theme = "slick" 
+#icons = "awesome" # awesome font v4
+icons = "awesome5" # awesome font v5
+
+[[block]]
+block = "weather"
+format = "{weather} ({location}) {temp}, {wind} mph {direction}"
+service = { name = "openweathermap", api_key = "29849281d3210607b7bfc36ac75c2c37", city_id = "5528182", units = "imperial" }
+
+[[block]]
+block = "disk_space"
+path = "/"
+#alias = "/"
+info_type = "available"
+unit = "GB"
+format = "{icon} {available}"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "temperature"
+collapsed = false
+interval = 10
+format = "{min} min, {max} max, {average} avg"
+chip = "*-isa-*"
+inputs = ["CPUTIN", "SYSTIN"]
+
+#[[block]]
+#block = "memory"
+#display_type = "memory"
+#icons = true
+##format_mem = "{mem_used_percents}"
+#format_mem = "{mem_avail}"
+
+[[block]]
+block = "cpu"
+interval = 2
+format = "{barchart} {utilization}"
+
+#[[block]]
+#block = "load"
+#interval = 1
+#format = "{1m}"
+
+[[block]]
+block = "networkmanager"
+on_click = "alacritty -e nmtui"
+interface_name_include = []
+ap_format = "{ssid^10}"
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d/%m %R"
+on_click = "gsimplecal"
+
+[[block]]
+block = "battery"
+if_command = "test -e /sys/class/power_supply/BAT0"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "notify" # dunst togglable bell
+format = ""
